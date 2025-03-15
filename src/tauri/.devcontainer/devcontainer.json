@@ -1,0 +1,58 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/rust
+{
+	"name": "Tauri",
+	"build": {
+        "dockerfile": "Dockerfile"
+    },
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "configureZshAsDefaultShell": "true"
+        },
+		"ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/rust:1": {
+            "version": "latest" // Use the latest Rust version
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "latest" // Specify the Node.js version
+        }
+    },
+
+	// Configure tool-specific properties.
+	"customizations": {
+        "vscode": {
+			"settings": {
+				"editor.defaultFormatter": "rust-lang.rust-analyzer",
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": true,
+				"debug.allowBreakpointsEverywhere": true
+			},
+            "extensions": [
+				"rust-lang.rust-analyzer",
+				"tauri-apps.tauri-vscode",
+				"esbenp.prettier-vscode",
+				"tamasfe.even-better-toml",
+				"vadimcn.vscode-lldb",
+				"dbaeumer.vscode-eslint"
+			]
+        }
+    },
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "npm install",
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "vscode"
+}
