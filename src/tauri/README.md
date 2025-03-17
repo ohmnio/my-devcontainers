@@ -1,5 +1,5 @@
 
-# My Tauri (tauri)
+# Tauri App Dev Container (tauri)
 
 A dev container configured for Tauri app development.
 
@@ -20,7 +20,7 @@ Alternatively, run the following command to intialise a new project and launch t
 Note: you must have [installed the devcontainer cli from within VSCode, not from npm](https://code.visualstudio.com/docs/devcontainers/devcontainer-cli#_installation):
 
 ```bash 
-sh <(curl -s https://raw.githubusercontent.com/ohmnio/my-devcontainers/main/src/tauri/setup-tauri.sh)
+sh <(curl -s https://raw.githubusercontent.com/ohmnio/my-devcontainers/main/src/tauri/create-tauri-project.sh)
 ```
 
 ---
