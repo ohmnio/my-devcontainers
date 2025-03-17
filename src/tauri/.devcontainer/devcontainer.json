@@ -46,17 +46,7 @@
 			]
         }
     },
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	"onCreateCommand": "cargo install tauri-cli --version '^2.0.0' --locked",
-
-	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "npm install",
-
 	"postStartCommand": "npm run tauri dev",
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "vscode"
 }
