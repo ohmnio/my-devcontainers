@@ -6,7 +6,6 @@
         "dockerfile": "Dockerfile"
     },
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
             "username": "vscode",
@@ -25,17 +24,11 @@
             "version": "latest"
         }
     },
+	"postCreateCommand": "npm install",
+	"remoteUser": "vscode",
 
-	// Configure tool-specific properties.
 	"customizations": {
         "vscode": {
-			"settings": {
-				"editor.defaultFormatter": "rust-lang.rust-analyzer",
-				"editor.formatOnPaste": true,
-				"editor.formatOnSave": true,
-				"editor.formatOnType": true,
-				"debug.allowBreakpointsEverywhere": true
-			},
             "extensions": [
 				"rust-lang.rust-analyzer",
 				"tauri-apps.tauri-vscode",
@@ -43,10 +36,66 @@
 				"tamasfe.even-better-toml",
 				"vadimcn.vscode-lldb",
 				"dbaeumer.vscode-eslint"
-			]
+			],
+			"settings": {
+				"editor.defaultFormatter": "rust-lang.rust-analyzer",
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": true,
+				"debug.allowBreakpointsEverywhere": true,
+				
+				"tasks": {
+					"version": "2.0.0",
+					"tasks": [
+						{
+							"label": "ui:dev",
+							"type": "shell",
+							// `dev` keeps running in the background
+							// ideally you should also configure a `problemMatcher`
+							// see https://code.visualstudio.com/docs/editor/tasks#_can-a-background-task-be-used-as-a-prelaunchtask-in-launchjson
+							"isBackground": true,
+							"problemMatcher": [
+								
+							],
+							"command": "npm",
+							"args": ["run", "dev"]
+						},
+						{
+							"label": "ui:build",
+							"type": "shell",
+							"command": "npm",
+							"args": ["build"]
+						}
+					]
+				},
+
+				"launch": {
+					"configurations": [
+						{
+							"type": "lldb",
+							"request": "launch",
+							"name": "Tauri Development Debug",
+							"cargo": {
+								"args": [
+									"build",
+									"--manifest-path=${workspaceFolder}/src-tauri/Cargo.toml",
+									"--no-default-features"
+								]
+							},
+							"preLaunchTask": "ui:dev"
+						},
+						{
+							"type": "lldb",
+							"request": "launch",
+							"name": "Tauri Production Debug",
+							"cargo": {
+								"args": ["build", "--release", "--manifest-path=${workspaceFolder}/src-tauri/Cargo.toml"]
+							},
+							"preLaunchTask": "ui:build"
+						}
+					]
+				}
+			}
         }
-    },
-	"postCreateCommand": "npm install",
-	"postStartCommand": "npm run tauri dev",
-	"remoteUser": "vscode"
+    }
 }

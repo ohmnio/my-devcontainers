@@ -1,6 +1,6 @@
 {
     "id": "tauri",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "name": "Tauri App Dev Container",
     "description": "A dev container configured for Tauri app development.",
     "documentationURL": "https://github.com/ohmnio/my-devcontainers/tree/main/src/tauri",
