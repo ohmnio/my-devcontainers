@@ -1,4 +1,4 @@
-This dev container is intended to be used in a project with a [Tauri](https://v2.tauri.app/) app project.
+Use this template to intialise a dev container for [Tauri](https://v2.tauri.app/) app development.
 
 ## Project Setup
 
@@ -19,6 +19,6 @@ sh <(curl -s https://raw.githubusercontent.com/ohmnio/my-devcontainers/main/src/
 
 ## Debugging
 
-Once in the dev container, use the included launch configuration (press `f5`) to launch your app in debug mode. 
+Once in the dev container, use the included launch configuration (`F5`) to launch your app in debug mode. 
 
-Note: Tauri can be used with many different frontend frameworks which each have their own dev servers which run in the background while the app is running. This means we cannot include the `problemMatcher` in the launch configuration since we can't assume which frontend framework will be used. This will result in a notice about problem matchers when launching the debugger. You can choose to `debug anyway` to continue but any problems emitted from the background dev server will not appear in the problems panel in VSCode. To fix this you can populate the `problemMatcher` config in the devcontainer.json to suit your frontend frameworks dev server.
+Note: Tauri can be used with many different frontend frameworks which each have their own dev servers which run in the background while the app is running. This means we cannot include the `problemMatcher` in the launch configuration since we can't assume which frontend framework will be used. This will result in a notice about problem matchers the first time launching the debugger. You can choose to `Debug Anyway` to continue but any problems emitted from the background dev server will not appear in the problems panel in VSCode. To fix this you can populate the `problemMatcher` config in the devcontainer.json to suit your frontend frameworks dev server.
